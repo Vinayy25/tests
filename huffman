@@ -1,0 +1,26 @@
+
+
+clear all; 
+close all; 
+
+message = "aabbcccddee";
+len = length(message);
+
+[x y z] = unique(message);
+freq = histc(z,1:numel(x));
+sym = regexp(x,'.','match');
+o = num2cell(freq);
+k = length(sym);
+for i=1:k
+p(i)=0;
+p(i)=o{i}/l;
+end 
+disp(p);
+[dict, avglen] = huffmandict(sym,p);
+for j=1:k
+dict{j,:}
+end
+hcode = huffmanenco(message,dict);
+dhsig = huffmandeco(hcode,dict);
+disp(hcode);
+disp(dhsig);
